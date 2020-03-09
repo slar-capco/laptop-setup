@@ -111,37 +111,47 @@ if has_command 'kubectl'; then
 fi
 
 if has_command "brew cask"; then
-    if has_command 'docker'; then
+  if has_command 'docker'; then
     get_consent "Upgrade docker"
     if has_consent; then
         e_pending "Upgrading docker"
         brew cask install docker
         test_command "docker"
     fi
-    fi
+  fi
 fi
 
 if has_command "brew cask"; then
-    if has_command 'gcloud'; then
+  if has_command 'gcloud'; then
     get_consent "Upgrade google-cloud-sdk"
     if has_consent; then
         e_pending "Upgrading google-cloud-sdk"
         brew cask install google-cloud-sdk
         test_command "gcloud"
     fi
-    fi
+  fi
 fi
 
 if has_command "brew cask"; then
-    if has_command 'gpg'; then
+  if has_command 'gpg'; then
     get_consent "Upgrade gpg-suite"
     if has_consent; then
         e_pending "Upgrading gpg-suite"
         brew cask install gpg-suite
         test_command "gpg"
     fi
-    fi
+  fi
 fi
+
+if has_command 'az'; then
+  get_consent "Upgrade azure-cli"
+  if has_consent; then
+    e_pending "Upgrading azure-cli"
+    brew install azure-cli
+    test_command "az"
+  fi
+fi
+
 
 ##  TODO:
 #  AWS CLI, docker-compose, python, java, spark

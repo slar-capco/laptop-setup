@@ -36,7 +36,12 @@ test_command() {
   if has_command $1; then
     e_success "$1"
   else
-    e_failure "$1"
+    local message=""
+    if [ "$2" ]
+      then
+        message=" -> $2"
+    fi  
+    e_failure "$1$message"
   fi
 }
 
